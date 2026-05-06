@@ -1,3 +1,7 @@
+﻿/**
+ * UsersModule — dang ky cac thanh phan cua feature Users.
+ * (EN: UsersModule — registers components for Users feature.)
+ */
 import {
     Module,
 } from "@nestjs/common"
@@ -12,7 +16,7 @@ import {
 } from "./users.service"
 
 /**
- * Module gom controller/service cho flow đăng ký user.
+ * Module gom controller/service cho flow Ä‘Äƒng kÃ½ user.
  * (EN: Users feature module for registration API.)
  */
 @Module({

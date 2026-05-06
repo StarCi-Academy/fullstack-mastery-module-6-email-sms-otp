@@ -1,0 +1,31 @@
+# Stack hạ tầng bài 1-otp-verification-with-redis — chỉ infra, backend chạy local (nest start).
+# (EN: Infrastructure stack for 1-otp-verification-with-redis — infra only, backend runs locally.)
+#
+# Thư mục: cd fullstack-mastery-module-6-email-sms-otp/1-otp-verification-with-redis/.docker
+# (EN: Working dir: cd fullstack-mastery-module-6-email-sms-otp/1-otp-verification-with-redis/.docker)
+#
+# Khởi chạy: docker compose up -d
+# (EN: Start: docker compose up -d)
+#
+# Dừng & xóa: docker compose down -v
+# (EN: Stop & clean: docker compose down -v)
+name: 1-otp-verification-with-redis
+
+services:
+  # Redis — lưu OTP với TTL cho bài học.
+  # (EN: Redis — stores OTP codes with TTL for the lesson.)
+  redis:
+    image: redis:7-alpine
+    ports:
+      # Ánh xạ cổng host 6379 → container 6379 (Redis).
+      # (EN: Map host port 6379 → container 6379 (Redis).)
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+volumes:
+  redis_data:
+
+networks:
+  1-otp-verification-with-redis:
+    name: 1-otp-verification-with-redis

@@ -1,7 +1,11 @@
+﻿/**
+ * DTO validate payload Otp.
+ * (EN: DTO validates Otp payload.)
+ */
 import { IsNotEmpty, IsString, Length, Matches } from 'class-validator';
 
 /**
- * DTO yêu cầu gửi mã OTP
+ * DTO yÃªu cáº§u gá»­i mÃ£ OTP
  * (EN: Request DTO for sending OTP)
  */
 export class SendOtpDto {
@@ -13,7 +17,7 @@ export class SendOtpDto {
 }
 
 /**
- * DTO xác thực mã OTP
+ * DTO xÃ¡c thá»±c mÃ£ OTP
  * (EN: Request DTO for verifying OTP)
  */
 export class VerifyOtpDto {

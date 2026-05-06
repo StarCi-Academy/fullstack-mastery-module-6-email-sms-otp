@@ -1,24 +1,29 @@
-{
-  "compilerOptions": {
-    "module": "CommonJS",
-    "declaration": true,
-    "removeComments": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": true,
-    "target": "ES2021",
-    "sourceMap": true,
-    "outDir": "./dist",
-    "baseUrl": "./",
-    "incremental": true,
-    "skipLibCheck": true,
-    "strictNullChecks": false,
-    "noImplicitAny": false,
-    "strictBindCallApply": false,
-    "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false,
-    "paths": {
-      "@/*": ["src/*"]
-    }
-  }
+﻿{
+    "compilerOptions":  {
+                            "module":  "CommonJS",
+                            "declaration":  true,
+                            "removeComments":  true,
+                            "emitDecoratorMetadata":  true,
+                            "experimentalDecorators":  true,
+                            "allowSyntheticDefaultImports":  true,
+                            "target":  "ES2021",
+                            "sourceMap":  true,
+                            "outDir":  "./dist",
+                            "baseUrl":  "./",
+                            "incremental":  true,
+                            "skipLibCheck":  true,
+                            "strictNullChecks":  false,
+                            "noImplicitAny":  false,
+                            "strictBindCallApply":  false,
+                            "forceConsistentCasingInFileNames":  false,
+                            "noFallthroughCasesInSwitch":  false,
+                            "paths":  {
+                                          "@1-otp-verification-with-redis":  [
+                                                                                 "src/index.ts"
+                                                                             ],
+                                          "@1-otp-verification-with-redis/*":  [
+                                                                                   "src/*"
+                                                                               ]
+                                      }
+                        }
 }

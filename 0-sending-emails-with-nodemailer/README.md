@@ -9,6 +9,18 @@ Demo NestJS gửi email HTML bằng **Nodemailer + `@nestjs-modules/mailer` + Ha
 
 ## 2. Setup
 
+Clone module đúng tên:
+
+```bash
+# Bước 1: Clone repository demo về máy local
+git clone https://github.com/StarCi-Academy/fullstack-mastery-module-6-email-sms-otp.git
+
+# Bước 2: Di chuyển vào thư mục bài học
+cd fullstack-mastery-module-6-email-sms-otp/0-sending-emails-with-nodemailer
+```
+
+Sau đó cài dependencies:
+
 ```bash
 npm install
 ```

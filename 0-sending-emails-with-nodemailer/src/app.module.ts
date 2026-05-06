@@ -1,3 +1,7 @@
+﻿/**
+ * AppModule — dang ky cac thanh phan cua feature App.
+ * (EN: AppModule — registers components for App feature.)
+ */
 import {
     Module,
 } from "@nestjs/common"
@@ -10,12 +14,12 @@ import {
 } from "./modules"
 
 /**
- * Root module gom Users + Mail feature cho bài học gửi email.
+ * Root module gom Users + Mail feature cho bÃ i há»c gá»­i email.
  * (EN: Root module composing user registration and mail delivery features.)
  */
 @Module({
     imports: [
-        // Nạp biến môi trường toàn app để module khác dùng ConfigService (EN: global env config bootstrap).
+        // Náº¡p biáº¿n mÃ´i trÆ°á»ng toÃ n app Ä‘á»ƒ module khÃ¡c dÃ¹ng ConfigService (EN: global env config bootstrap).
         ConfigModule.forRoot({
             isGlobal: true,
         }),

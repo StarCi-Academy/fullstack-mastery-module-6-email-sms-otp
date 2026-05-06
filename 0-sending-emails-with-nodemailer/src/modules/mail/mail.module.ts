@@ -1,3 +1,7 @@
+﻿/**
+ * MailModule — dang ky cac thanh phan cua feature Mail.
+ * (EN: MailModule — registers components for Mail feature.)
+ */
 import {
     Module,
 } from "@nestjs/common"
@@ -18,7 +22,7 @@ import {
 } from "./mail.service"
 
 /**
- * Cấu hình SMTP + Handlebars template cho nghiệp vụ gửi email.
+ * Cáº¥u hÃ¬nh SMTP + Handlebars template cho nghiá»‡p vá»¥ gá»­i email.
  * (EN: Configures SMTP transport and Handlebars template rendering.)
  */
 @Module({

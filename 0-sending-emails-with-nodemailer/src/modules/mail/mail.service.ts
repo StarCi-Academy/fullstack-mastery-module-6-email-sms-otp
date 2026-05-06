@@ -1,3 +1,7 @@
+﻿/**
+ * Service xu ly logic nghiep vu cua Mail.
+ * (EN: Business logic service for Mail.)
+ */
 import {
     Injectable,
     Logger,
@@ -7,7 +11,7 @@ import {
 } from "@nestjs-modules/mailer"
 
 /**
- * Service gửi email transactional dùng template Handlebars.
+ * Service gá»­i email transactional dÃ¹ng template Handlebars.
  * (EN: Transactional email sender powered by Nest Mailer + Handlebars.)
  */
 @Injectable()
@@ -17,25 +21,25 @@ export class MailService {
     constructor(private readonly mailerService: MailerService) {}
 
     /**
-     * Gửi welcome email sau khi user đăng ký thành công.
+     * Gá»­i welcome email sau khi user Ä‘Äƒng kÃ½ thÃ nh cÃ´ng.
      * (EN: Sends welcome email after successful registration.)
      *
-     * @param recipientEmail - Email người nhận (EN: receiver inbox address).
-     * @param recipientName - Tên hiển thị trên template (EN: display name in template).
-     * @returns Promise<void> - Resolve khi SMTP provider chấp nhận message.
+     * @param recipientEmail - Email ngÆ°á»i nháº­n (EN: receiver inbox address).
+     * @param recipientName - TÃªn hiá»ƒn thá»‹ trÃªn template (EN: display name in template).
+     * @returns Promise<void> - Resolve khi SMTP provider cháº¥p nháº­n message.
      */
     async sendWelcomeEmail(recipientEmail: string, recipientName: string): Promise<void> {
-        // Chuẩn hóa dữ liệu hiển thị để tránh render tên rỗng trong template (EN: normalize fallback name before rendering).
-        const safeName = recipientName.trim() || "Học viên StarCi"
+        // Chuáº©n hÃ³a dá»¯ liá»‡u hiá»ƒn thá»‹ Ä‘á»ƒ trÃ¡nh render tÃªn rá»—ng trong template (EN: normalize fallback name before rendering).
+        const safeName = recipientName.trim() || "Há»c viÃªn StarCi"
         await this.mailerService.sendMail({
             to: recipientEmail,
-            subject: "Chào mừng đến với StarCi Academy",
+            subject: "ChÃ o má»«ng Ä‘áº¿n vá»›i StarCi Academy",
             template: "welcome",
             context: {
                 name: safeName,
             },
         })
-        // Ghi log context để debug vận hành SMTP mà không lộ secret (EN: operational visibility without exposing credentials).
+        // Ghi log context Ä‘á»ƒ debug váº­n hÃ nh SMTP mÃ  khÃ´ng lá»™ secret (EN: operational visibility without exposing credentials).
         this.logger.log({
             message: "Welcome email accepted by SMTP provider",
             recipientEmail,

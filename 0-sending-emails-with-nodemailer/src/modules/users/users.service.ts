@@ -1,3 +1,7 @@
+﻿/**
+ * Service xu ly logic nghiep vu cua Users.
+ * (EN: Business logic service for Users.)
+ */
 import {
     Injectable,
     Logger,
@@ -10,7 +14,7 @@ import {
 } from "./dto/register-user.dto"
 
 /**
- * Nghiệp vụ đăng ký user (demo) và trigger welcome email.
+ * Nghiá»‡p vá»¥ Ä‘Äƒng kÃ½ user (demo) vÃ  trigger welcome email.
  * (EN: Demo registration workflow that triggers welcome email.)
  */
 @Injectable()
@@ -20,18 +24,18 @@ export class UsersService {
     constructor(private readonly mailService: MailService) {}
 
     /**
-     * Xử lý đăng ký user và gửi email chào mừng.
+     * Xá»­ lÃ½ Ä‘Äƒng kÃ½ user vÃ  gá»­i email chÃ o má»«ng.
      * (EN: Handles registration and sends welcome email.)
      *
-     * @param payload - Dữ liệu đăng ký gồm email/name (EN: registration payload).
-     * @returns Promise<{ message: string }> - Response đúng format lesson.
+     * @param payload - Dá»¯ liá»‡u Ä‘Äƒng kÃ½ gá»“m email/name (EN: registration payload).
+     * @returns Promise<{ message: string }> - Response Ä‘Ãºng format lesson.
      */
     async register(payload: RegisterUserDto): Promise<{ message: string }> {
-        // Demo bài học chưa cần DB, nên xem bước này là "đã lưu user thành công" (EN: persistence intentionally omitted for this lesson).
+        // Demo bÃ i há»c chÆ°a cáº§n DB, nÃªn xem bÆ°á»›c nÃ y lÃ  "Ä‘Ã£ lÆ°u user thÃ nh cÃ´ng" (EN: persistence intentionally omitted for this lesson).
         const normalizedEmail = payload.email.trim().toLowerCase()
-        // Gọi mail service để render template + gửi SMTP qua Brevo (EN: send transactional welcome email).
+        // Gá»i mail service Ä‘á»ƒ render template + gá»­i SMTP qua Brevo (EN: send transactional welcome email).
         await this.mailService.sendWelcomeEmail(normalizedEmail, payload.name)
-        // Structured log để theo dõi flow register -> send mail (EN: operational trace for demo flow).
+        // Structured log Ä‘á»ƒ theo dÃµi flow register -> send mail (EN: operational trace for demo flow).
         this.logger.log({
             message: "User registered and welcome email sent",
             email: normalizedEmail,
