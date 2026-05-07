@@ -1,4 +1,5 @@
-﻿/**
+﻿import { appConfig } from "./config"
+/**
  * AppModule — đăng ký các thành phần của feature App.
  * (EN: AppModule — registers components for App feature.)
  */
@@ -14,15 +15,13 @@ import {
 } from "./modules"
 
 /**
- * Root module gom Users + Mail feature cho bÃ i học gửi email.
+ * Root module gom Users + Mail feature cho bÃ i há»c gửi email.
  * (EN: Root module composing user registration and mail delivery features.)
  */
 @Module({
     imports: [
-        // Nạp biến môi trường toÃ n app để module khác dùng ConfigService (EN: global env config bootstrap).
-        ConfigModule.forRoot({
-            isGlobal: true, load: [appConfig] 
-        }),
+        // Nạp biến môi trưá»ng toÃ n app để module khác dùng ConfigService (EN: global env config bootstrap).
+        ConfigModule.forRoot({ isGlobal: true, load: [appConfig] }),
         MailModule,
         UsersModule,
     ],
