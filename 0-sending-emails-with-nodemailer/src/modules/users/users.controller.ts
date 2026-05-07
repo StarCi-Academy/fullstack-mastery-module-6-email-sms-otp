@@ -29,7 +29,7 @@ export class UsersController {
      * (EN: Lesson endpoint to trigger welcome email flow.)
      *
      * @param payload - Request body gồm email và name (EN: email and name payload).
-     * @returns Promise<{ message: string }> - Trả thông báo thÃ nh công cho client.
+     * @returns Promise<{ message: string }> - Trả thông báo thÃ nh công cho client.
      */
     @Post("register")
     @HttpCode(HttpStatus.CREATED)

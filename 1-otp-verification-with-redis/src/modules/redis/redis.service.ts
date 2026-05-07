@@ -41,7 +41,7 @@ export class RedisService implements OnModuleInit, OnModuleDestroy {
    * (EN: Close Redis connection when module is destroyed)
    */
     async onModuleDestroy() {
-    // Ngắt kết nối an toÃ n (EN: Safely disconnect)
+    // Ngắt kết nối an toÃ n (EN: Safely disconnect)
         await this.client.quit()
     }
 

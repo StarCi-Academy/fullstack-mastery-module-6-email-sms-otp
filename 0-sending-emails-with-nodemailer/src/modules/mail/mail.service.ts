@@ -21,7 +21,7 @@ export class MailService {
     constructor(private readonly mailerService: MailerService) {}
 
     /**
-     * Gửi welcome email sau khi user đăng ký thÃ nh công.
+     * Gửi welcome email sau khi user đăng ký thÃ nh công.
      * (EN: Sends welcome email after successful registration.)
      *
      * @param recipientEmail - Email người nhận (EN: receiver inbox address).
@@ -33,13 +33,13 @@ export class MailService {
         const safeName = recipientName.trim() || "Học viên StarCi"
         await this.mailerService.sendMail({
             to: recipientEmail,
-            subject: "ChÃ o mừng đến với StarCi Academy",
+            subject: "ChÃ o mừng đến với StarCi Academy",
             template: "welcome",
             context: {
                 name: safeName,
             },
         })
-        // Ghi log context để debug vận hÃ nh SMTP mÃ  không lộ secret (EN: operational visibility without exposing credentials).
+        // Ghi log context để debug vận hÃ nh SMTP mÃ  không lộ secret (EN: operational visibility without exposing credentials).
         this.logger.log({
             message: "Welcome email accepted by SMTP provider",
             recipientEmail,

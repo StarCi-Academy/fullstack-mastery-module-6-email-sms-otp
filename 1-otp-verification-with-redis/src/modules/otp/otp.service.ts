@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Service xu ly logic nghiep vu cua Otp.
  * (EN: Business logic service for Otp.)
  */
@@ -15,7 +15,7 @@ import {
 } from "crypto"
 import {
     RedisService 
-} from "@/redis"
+} from "../redis"
 
 /**
  * Service xử lý logic OTP (Sinh mã, Kiểm tra giới hạn, Xác thực)
@@ -39,7 +39,7 @@ export class OtpService {
    * (EN: Send OTP to user)
    *
    * @param phone - Số điện thoại nhận mã (EN: Receiver phone number)
-   * @returns Object chứa thông báo thÃ nh công (EN: Success message object)
+   * @returns Object chứa thông báo thÃ nh công (EN: Success message object)
    */
     async sendOtp(phone: string) {
         const retryKey = `retry:${phone}`
@@ -54,7 +54,7 @@ export class OtpService {
             )
         }
 
-        // 2. Sinh mã OTP 6 số an toÃ n (EN: Generate secure 6-digit OTP)
+        // 2. Sinh mã OTP 6 số an toÃ n (EN: Generate secure 6-digit OTP)
         const otp = randomInt(100000,
             999999).toString()
 
@@ -133,7 +133,7 @@ export class OtpService {
 
         return {
             success: true,
-            message: "Xác thực OTP thÃ nh công!",
+            message: "Xác thực OTP thÃ nh công!",
         }
     }
 }

@@ -21,7 +21,7 @@ export async function bootstrap(): Promise<void> {
     // (EN: Enforce DTO contracts globally.)
     app.useGlobalPipes(new ValidationPipe({
         whitelist: true,
-        forbidNonWhitelisted: true,
+        forbidUnknownValues: false,
     }))
     const configService = app.get(ConfigService)
     const port = Number(configService.get<string>("PORT") ?? 3000)
