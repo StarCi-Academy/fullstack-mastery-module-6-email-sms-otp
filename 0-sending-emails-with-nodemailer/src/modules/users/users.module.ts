@@ -1,5 +1,5 @@
 ﻿/**
- * UsersModule — dang ky cac thanh phan cua feature Users.
+ * UsersModule — đăng ký các thành phần của feature Users.
  * (EN: UsersModule — registers components for Users feature.)
  */
 import {

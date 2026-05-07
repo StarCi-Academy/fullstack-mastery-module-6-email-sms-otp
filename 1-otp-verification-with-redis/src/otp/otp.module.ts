@@ -1,5 +1,5 @@
 ﻿/**
- * OtpModule — dang ky cac thanh phan cua feature Otp.
+ * OtpModule — đăng ký các thành phần của feature Otp.
  * (EN: OtpModule — registers components for Otp feature.)
  */
 import {

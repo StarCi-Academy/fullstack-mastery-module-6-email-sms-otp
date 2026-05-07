@@ -1,5 +1,5 @@
 ﻿/**
- * RedisModule — dang ky cac thanh phan cua feature Redis.
+ * RedisModule — đăng ký các thành phần của feature Redis.
  * (EN: RedisModule — registers components for Redis feature.)
  */
 import {

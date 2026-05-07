@@ -1,5 +1,5 @@
 ﻿/**
- * MailModule — dang ky cac thanh phan cua feature Mail.
+ * MailModule — đăng ký các thành phần của feature Mail.
  * (EN: MailModule — registers components for Mail feature.)
  */
 import {
