@@ -25,5 +25,6 @@ export async function bootstrap(): Promise<void> {
     }))
     const configService = app.get(ConfigService)
     const port = Number(configService.get<string>("PORT") ?? 3000)
-    await app.listen(port, "0.0.0.0")
+    await app.listen(port,
+        "0.0.0.0")
 }

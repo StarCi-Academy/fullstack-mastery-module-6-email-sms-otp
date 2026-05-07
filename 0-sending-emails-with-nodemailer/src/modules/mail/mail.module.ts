@@ -22,7 +22,7 @@ import {
 } from "./mail.service"
 
 /**
- * Cáº¥u hÃ¬nh SMTP + Handlebars template cho nghiá»‡p vá»¥ gá»­i email.
+ * Cấu hình SMTP + Handlebars template cho nghiệp vụ gửi email.
  * (EN: Configures SMTP transport and Handlebars template rendering.)
  */
 @Module({

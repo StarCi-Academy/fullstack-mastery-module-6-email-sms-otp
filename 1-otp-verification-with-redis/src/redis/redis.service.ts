@@ -2,98 +2,110 @@
  * Service xu ly logic nghiep vu cua Redis.
  * (EN: Business logic service for Redis.)
  */
-import { Injectable, OnModuleDestroy, OnModuleInit } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
-import { Redis } from 'ioredis';
+import {
+    Injectable, OnModuleDestroy, OnModuleInit 
+} from "@nestjs/common"
+import {
+    ConfigService 
+} from "@nestjs/config"
+import {
+    Redis 
+} from "ioredis"
 
 /**
- * Service quáº£n lÃ½ káº¿t ná»‘i vÃ  thao tÃ¡c vá»›i Redis
+ * Service quản lý kết nối vÃ  thao tác với Redis
  * (EN: Service for managing Redis connections and operations)
  */
 @Injectable()
 export class RedisService implements OnModuleInit, OnModuleDestroy {
-  private client: Redis;
+    private client: Redis
 
-  constructor(private configService: ConfigService) {}
+    constructor(private configService: ConfigService) {}
 
-  /**
-   * Khá»Ÿi táº¡o káº¿t ná»‘i Redis khi module báº¯t Ä‘áº§u
+    /**
+   * Khởi tạo kết nối Redis khi module bắt đầu
    * (EN: Initialize Redis connection when module starts)
    */
-  onModuleInit() {
-    // Khá»Ÿi táº¡o client Redis tá»« cáº¥u hÃ¬nh (EN: Initialize Redis client from config)
-    this.client = new Redis({
-      host: this.configService.get<string>('REDIS_HOST', 'localhost'),
-      port: this.configService.get<number>('REDIS_PORT', 6379),
-    });
-  }
+    onModuleInit() {
+    // Khởi tạo client Redis từ cấu hình (EN: Initialize Redis client from config)
+        this.client = new Redis({
+            host: this.configService.get<string>("REDIS_HOST",
+                "localhost"),
+            port: this.configService.get<number>("REDIS_PORT",
+                6379),
+        })
+    }
 
-  /**
-   * ÄÃ³ng káº¿t ná»‘i Redis khi module bá»‹ há»§y
+    /**
+   * Đóng kết nối Redis khi module bị hủy
    * (EN: Close Redis connection when module is destroyed)
    */
-  async onModuleDestroy() {
-    // Ngáº¯t káº¿t ná»‘i an toÃ n (EN: Safely disconnect)
-    await this.client.quit();
-  }
+    async onModuleDestroy() {
+    // Ngắt kết nối an toÃ n (EN: Safely disconnect)
+        await this.client.quit()
+    }
 
-  /**
-   * LÆ°u giÃ¡ trá»‹ vÃ o Redis vá»›i thá»i gian háº¿t háº¡n (TTL)
+    /**
+   * Lưu giá trị vÃ o Redis với thời gian hết hạn (TTL)
    * (EN: Set value in Redis with expiration time - TTL)
    *
-   * @param key - KhÃ³a lÆ°u trá»¯ (EN: Storage key)
-   * @param value - GiÃ¡ trá»‹ (EN: Value)
-   * @param ttlSeconds - Thá»i gian sá»‘ng tÃ­nh báº±ng giÃ¢y (EN: Time-to-live in seconds)
+   * @param key - Khóa lưu trữ (EN: Storage key)
+   * @param value - Giá trị (EN: Value)
+   * @param ttlSeconds - Thời gian sống tính bằng giây (EN: Time-to-live in seconds)
    */
-  async set(key: string, value: string, ttlSeconds: number): Promise<void> {
-    // LÆ°u key-value vá»›i tham sá»‘ EX Ä‘á»ƒ set TTL (EN: Set key-value with EX param for TTL)
-    await this.client.set(key, value, 'EX', ttlSeconds);
-  }
+    async set(key: string, value: string, ttlSeconds: number): Promise<void> {
+    // Lưu key-value với tham số EX để set TTL (EN: Set key-value with EX param for TTL)
+        await this.client.set(key,
+            value,
+            "EX",
+            ttlSeconds)
+    }
 
-  /**
-   * Láº¥y giÃ¡ trá»‹ tá»« Redis
+    /**
+   * Lấy giá trị từ Redis
    * (EN: Get value from Redis)
    *
-   * @param key - KhÃ³a cáº§n láº¥y (EN: Key to fetch)
-   * @returns Promise<string | null> - GiÃ¡ trá»‹ hoáº·c null náº¿u khÃ´ng tá»“n táº¡i
+   * @param key - Khóa cần lấy (EN: Key to fetch)
+   * @returns Promise<string | null> - Giá trị hoặc null nếu không tồn tại
    */
-  async get(key: string): Promise<string | null> {
-    // Truy xuáº¥t giÃ¡ trá»‹ theo key (EN: Retrieve value by key)
-    return await this.client.get(key);
-  }
+    async get(key: string): Promise<string | null> {
+    // Truy xuất giá trị theo key (EN: Retrieve value by key)
+        return await this.client.get(key)
+    }
 
-  /**
-   * XÃ³a má»™t khÃ³a khá»i Redis
+    /**
+   * Xóa một khóa khá»i Redis
    * (EN: Delete a key from Redis)
    *
-   * @param key - KhÃ³a cáº§n xÃ³a (EN: Key to delete)
+   * @param key - Khóa cần xóa (EN: Key to delete)
    */
-  async del(key: string): Promise<void> {
-    // XÃ³a key (EN: Delete key)
-    await this.client.del(key);
-  }
+    async del(key: string): Promise<void> {
+    // Xóa key (EN: Delete key)
+        await this.client.del(key)
+    }
 
-  /**
-   * TÄƒng giÃ¡ trá»‹ cá»§a má»™t khÃ³a (nguyÃªn tá»­)
+    /**
+   * Tăng giá trị của một khóa (nguyên tử)
    * (EN: Increment the value of a key - atomic)
    *
-   * @param key - KhÃ³a cáº§n tÄƒng (EN: Key to increment)
-   * @returns Promise<number> - GiÃ¡ trá»‹ sau khi tÄƒng
+   * @param key - Khóa cần tăng (EN: Key to increment)
+   * @returns Promise<number> - Giá trị sau khi tăng
    */
-  async incr(key: string): Promise<number> {
-    // TÄƒng biáº¿n Ä‘áº¿m (EN: Increment counter)
-    return await this.client.incr(key);
-  }
+    async incr(key: string): Promise<number> {
+    // Tăng biến đếm (EN: Increment counter)
+        return await this.client.incr(key)
+    }
 
-  /**
-   * Thiáº¿t láº­p thá»i gian háº¿t háº¡n cho má»™t khÃ³a
+    /**
+   * Thiết lập thời gian hết hạn cho một khóa
    * (EN: Set expiration time for a key)
    *
-   * @param key - KhÃ³a cáº§n set (EN: Key to set)
-   * @param seconds - Thá»i gian sá»‘ng (EN: Time-to-live)
+   * @param key - Khóa cần set (EN: Key to set)
+   * @param seconds - Thời gian sống (EN: Time-to-live)
    */
-  async expire(key: string, seconds: number): Promise<void> {
-    // Set thá»i gian háº¿t háº¡n (EN: Set expiration)
-    await this.client.expire(key, seconds);
-  }
+    async expire(key: string, seconds: number): Promise<void> {
+    // Set thời gian hết hạn (EN: Set expiration)
+        await this.client.expire(key,
+            seconds)
+    }
 }

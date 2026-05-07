@@ -14,14 +14,14 @@ import {
 } from "./modules"
 
 /**
- * Root module gom Users + Mail feature cho bÃ i há»c gá»­i email.
+ * Root module gom Users + Mail feature cho bÃ i học gửi email.
  * (EN: Root module composing user registration and mail delivery features.)
  */
 @Module({
     imports: [
-        // Náº¡p biáº¿n mÃ´i trÆ°á»ng toÃ n app Ä‘á»ƒ module khÃ¡c dÃ¹ng ConfigService (EN: global env config bootstrap).
+        // Nạp biến môi trường toÃ n app để module khác dùng ConfigService (EN: global env config bootstrap).
         ConfigModule.forRoot({
-            isGlobal: true,
+            isGlobal: true, load: [appConfig] 
         }),
         MailModule,
         UsersModule,

@@ -1,4 +1,6 @@
-import { IsNotEmpty, IsString, Matches } from 'class-validator';
+import {
+    IsNotEmpty, IsString, Matches 
+} from "class-validator"
 
 /**
  * DTO yêu cầu gửi tin nhắn SMS
@@ -11,10 +13,11 @@ export class SendSmsDto {
    */
   @IsString()
   @IsNotEmpty()
-  @Matches(/^\+[1-9]\d{1,14}$/, {
-    message: 'Phone number must be in E.164 format (e.g., +84987654321)',
-  })
-  phone: string;
+  @Matches(/^\+[1-9]\d{1,14}$/,
+      {
+          message: "Phone number must be in E.164 format (e.g., +84987654321)",
+      })
+      phone: string
 
   /**
    * Nội dung tin nhắn
@@ -22,5 +25,5 @@ export class SendSmsDto {
    */
   @IsString()
   @IsNotEmpty()
-  message: string;
+      message: string
 }

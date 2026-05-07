@@ -17,7 +17,7 @@ import {
 } from "./users.service"
 
 /**
- * HTTP entrypoint cho flow Ä‘Äƒng kÃ½ user vÃ  gá»­i welcome email.
+ * HTTP entrypoint cho flow đăng ký user vÃ  gửi welcome email.
  * (EN: HTTP controller exposing registration endpoint for email demo.)
  */
 @Controller("users")
@@ -28,8 +28,8 @@ export class UsersController {
      * Endpoint lesson: POST /users/register.
      * (EN: Lesson endpoint to trigger welcome email flow.)
      *
-     * @param payload - Request body gá»“m email vÃ  name (EN: email and name payload).
-     * @returns Promise<{ message: string }> - Tráº£ thÃ´ng bÃ¡o thÃ nh cÃ´ng cho client.
+     * @param payload - Request body gồm email vÃ  name (EN: email and name payload).
+     * @returns Promise<{ message: string }> - Trả thông báo thÃ nh công cho client.
      */
     @Post("register")
     @HttpCode(HttpStatus.CREATED)

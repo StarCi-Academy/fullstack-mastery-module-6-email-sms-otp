@@ -16,7 +16,7 @@ import {
 } from "./users.service"
 
 /**
- * Module gom controller/service cho flow Ä‘Äƒng kÃ½ user.
+ * Module gom controller/service cho flow đăng ký user.
  * (EN: Users feature module for registration API.)
  */
 @Module({

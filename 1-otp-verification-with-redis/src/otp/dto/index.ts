@@ -1,1 +1,1 @@
-export * from './otp.dto';
+export * from "./otp.dto"

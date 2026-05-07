@@ -2,33 +2,44 @@
  * DTO validate payload Otp.
  * (EN: DTO validates Otp payload.)
  */
-import { IsNotEmpty, IsString, Length, Matches } from 'class-validator';
+import {
+    IsNotEmpty, IsString, Length, Matches 
+} from "class-validator"
 
 /**
- * DTO yÃªu cáº§u gá»­i mÃ£ OTP
+ * DTO yêu cầu gửi mã OTP
  * (EN: Request DTO for sending OTP)
  */
 export class SendOtpDto {
   @IsString()
   @IsNotEmpty()
-  @Matches(/^[0-9]+$/, { message: 'Phone number must contain only digits' })
-  @Length(10, 11)
-  phone: string;
+  @Matches(/^[0-9]+$/,
+      {
+          message: "Phone number must contain only digits" 
+      })
+  @Length(10,
+      11)
+      phone: string
 }
 
 /**
- * DTO xÃ¡c thá»±c mÃ£ OTP
+ * DTO xác thực mã OTP
  * (EN: Request DTO for verifying OTP)
  */
 export class VerifyOtpDto {
   @IsString()
   @IsNotEmpty()
-  @Matches(/^[0-9]+$/, { message: 'Phone number must contain only digits' })
-  @Length(10, 11)
-  phone: string;
+  @Matches(/^[0-9]+$/,
+      {
+          message: "Phone number must contain only digits" 
+      })
+  @Length(10,
+      11)
+      phone: string
 
   @IsString()
   @IsNotEmpty()
-  @Length(6, 6)
-  code: string;
+  @Length(6,
+      6)
+      code: string
 }
