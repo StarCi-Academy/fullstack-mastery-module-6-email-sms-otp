@@ -13,7 +13,7 @@ import {
 } from "ioredis"
 
 /**
- * Service quản lý kết nối vÃ  thao tác với Redis
+ * Service quản lý kết nối và thao tác với Redis
  * (EN: Service for managing Redis connections and operations)
  */
 @Injectable()
@@ -46,7 +46,7 @@ export class RedisService implements OnModuleInit, OnModuleDestroy {
     }
 
     /**
-   * Lưu giá trị vÃ o Redis với thời gian hết hạn (TTL)
+   * Lưu giá trị vào Redis với thời gian hết hạn (TTL)
    * (EN: Set value in Redis with expiration time - TTL)
    *
    * @param key - Khóa lưu trữ (EN: Storage key)

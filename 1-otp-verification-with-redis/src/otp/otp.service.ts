@@ -58,7 +58,7 @@ export class OtpService {
         const otp = randomInt(100000,
             999999).toString()
 
-        // 3. Lưu OTP vÃ o Redis với TTL (EN: Save OTP to Redis with TTL)
+        // 3. Lưu OTP vào Redis với TTL (EN: Save OTP to Redis with TTL)
         const otpKey = `otp:${phone}`
         await this.redisService.set(otpKey,
             otp,
@@ -127,7 +127,7 @@ export class OtpService {
             )
         }
 
-        // 4. Nếu đúng: Xóa OTP vÃ  bộ đếm lỗi (EN: If correct: Clear OTP and fail counter)
+        // 4. Nếu đúng: Xóa OTP và bộ đếm lỗi (EN: If correct: Clear OTP and fail counter)
         await this.redisService.del(otpKey)
         await this.redisService.del(failKey)
 

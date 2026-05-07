@@ -14,7 +14,7 @@ import {
 } from "./dto/register-user.dto"
 
 /**
- * Nghiệp vụ đăng ký user (demo) vÃ  trigger welcome email.
+ * Nghiệp vụ đăng ký user (demo) và trigger welcome email.
  * (EN: Demo registration workflow that triggers welcome email.)
  */
 @Injectable()
@@ -24,7 +24,7 @@ export class UsersService {
     constructor(private readonly mailService: MailService) {}
 
     /**
-     * Xử lý đăng ký user vÃ  gửi email chÃ o mừng.
+     * Xử lý đăng ký user và gửi email chÃ o mừng.
      * (EN: Handles registration and sends welcome email.)
      *
      * @param payload - Dữ liệu đăng ký gồm email/name (EN: registration payload).

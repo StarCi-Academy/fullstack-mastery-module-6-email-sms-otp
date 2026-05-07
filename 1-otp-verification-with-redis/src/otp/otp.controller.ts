@@ -36,7 +36,7 @@ export class OtpController {
    * API Xác thực mã OTP (Khóa 15p nếu sai 5 lần)
    * (EN: Verify OTP API - Block 15m if 5 fails)
    *
-   * @param verifyOtpDto - Dữ liệu số điện thoại vÃ  mã (EN: Phone and code data)
+   * @param verifyOtpDto - Dữ liệu số điện thoại và mã (EN: Phone and code data)
    */
   @Post("verify")
   async verify(@Body() verifyOtpDto: VerifyOtpDto) {
